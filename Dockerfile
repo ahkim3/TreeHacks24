@@ -1,6 +1,6 @@
 FROM ghcr.io/merklebot/hackathon-arm-image:master as build
 
-RUN apt-get update && apt-get install -y ffmpeg alsa-utils
+#RUN apt-get update && apt-get install -y ffmpeg alsa-utils
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
