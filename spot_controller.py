@@ -41,7 +41,6 @@ class SpotController:
 
         # TODO: Create ImageCient instance and ManipulationApiClient instance
         self.image_client = self.robot.ensure_client(ImageClient.default_service_name)
-        self.manipulation_api_client = self.robot.ensure_client(ManipulationApiClient.default_service_name)
 
         self._lease_client = None
         self._lease = None
@@ -192,33 +191,3 @@ class SpotController:
         image_responses = self.image_client.get_image_from_sources(cameras)
 
         return image_responses
-
-    def move_to_object_in_image(self, image, point):
-        walk_vec = geometry_pb2.Vec2(x=point[0], y=point[1])
-
-        walk_to = manipulation_api_pb2.WalkToObjectInImage(
-            pixel_xy=walk_vec, transforms_snapshot_for_camera=image.shot.transforms_snapshot,
-            frame_name_image_sensor=image.shot.frame_name_image_sensor,
-            camera_model=image.source.pinhole
-        )
-
-        walk_to_request = manipulation_api_pb2.ManipulationApiRequest(
-            walk_to_object_in_image=walk_to
-        )
-
-        cmd_response = self.manipulation_api_client.manipulation_api_command(
-            manipulation_api_request=walk_to_request
-        )
-
-        while True:
-            time.sleep(0.25)
-
-            feedback_request = manipulation_api_pb2.ManipulationApiFeedbackRequest(
-                manipulation_cmd_i=cmd_response.manipulation_cmd_id
-            )
-
-            response = self.manipulation_api_client.manipulation_api_feedback_command(
-                manipulation_api_feedback_request=feedback_request)
-
-            if response.current_state == manipulation_api_pb2.MANIP_STATE_DONE:
-                break
