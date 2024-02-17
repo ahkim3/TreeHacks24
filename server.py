@@ -10,6 +10,9 @@ from gtts import gTTS
 # Import main from image_handling.py
 from get_surroundings import main as get_surroundings
 
+# Import SpotController class from spot_controller.py
+from spot_controller import SpotController
+
 def microphone_input_task():
     while True:
         # Code to handle microphone input

@@ -5,6 +5,8 @@ requests
 gTTS
 thread6
 grpcio
-bosdyn-client
+bosdyn-client >= 3.1
 bosdyn-mission
 bosdyn-choreography-client
+Pillow
+pycreate2
