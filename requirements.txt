@@ -3,3 +3,5 @@ numpy
 ffmpeg-python
 requests
 gTTS
+thread6
+grpc
