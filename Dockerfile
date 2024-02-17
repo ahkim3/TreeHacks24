@@ -1,4 +1,4 @@
-FROM arm64v8/python:3.8 as build
+FROM python:3.8-slim
 
 RUN apt-get update && apt-get install -y ffmpeg alsa-utils
 
