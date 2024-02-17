@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM ghcr.io/merklebot/hackathon-arm-image:master as build
 
 RUN apt-get update && apt-get install -y ffmpeg alsa-utils
 
