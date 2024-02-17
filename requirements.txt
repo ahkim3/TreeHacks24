@@ -5,3 +5,6 @@ requests
 gTTS
 thread6
 grpc
+bosdyn-client
+bosdyn-mission
+bosdyn-choreography-client
