@@ -3,3 +3,6 @@ numpy
 ffmpeg-python
 requests
 gTTS
+bosdyn-client
+bosdyn-mission
+bosdyn-choreography-client
